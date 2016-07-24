@@ -1,0 +1,69 @@
+﻿@model CloudComDevs.ShoppingCartDemo.Web.Models.Product
+
+@{
+    ViewBag.Title = "Add new product";
+}
+
+<h2>Add new product</h2>
+@using (Html.BeginForm("create", "product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+      @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+<table>
+
+   @* <tr>
+        <td>@Html.LabelFor(m=> m.CategoryID)</td>
+        <td> @Html.DropDownListFor(m=>m.CategoryID, new SelectList(Model.Category,"CategoryName","CategoryID"))</td>
+    </tr>*@
+
+    <tr>
+        <td>@Html.LabelFor(m=> m.ProductName)</td>
+        <td>@Html.TextBoxFor(m=> m.ProductName)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.LabelFor(m=> m.Description)</td>
+        <td>@Html.TextAreaFor(m=> m.Description)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.LabelFor(m=> m.UnitPrice)</td>
+        <td>@Html.TextBoxFor(m=> m.UnitPrice)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.LabelFor(m=> m.Quantity)</td>
+        <td>@Html.TextBoxFor(m=> m.Quantity)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.LabelFor(m=> m.Picture)</td>
+        <td> <input type="file" name="file" id="file" /></td>
+    </tr>
+   
+  @*  <tr>
+        <td>@Html.LabelFor(m=> m.Category.CategoryName)</td>
+        <td>@Html.LabelFor(m=> m.ProductName)</td>
+    </tr>*@
+     @*
+    <tr>
+        <td>@Html.LabelFor(m=> m.ProductName)</td>
+        <td>@Html.LabelFor(m=> m.ProductName)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.LabelFor(m=> m.ProductName)</td>
+        <td>@Html.LabelFor(m=> m.ProductName)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.LabelFor(m=> m.ProductName)</td>
+        <td>@Html.LabelFor(m=> m.ProductName)</td>
+    </tr>
+    *@
+    <tr>
+        <td><input type ="submit" value="Save" /></td>
+        <td><input type="reset" value="Cancel" /></td>
+    </tr>
+</table>
+}

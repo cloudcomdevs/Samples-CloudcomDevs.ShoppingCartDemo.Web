@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CloudComDevs.ShoppingCartDemo.Web.Models.Shipping>
+
+@{
+    ViewBag.Title = "ShippingDetails";
+    //Layout = "~/Views/_OrderViewStart.cshtml";
+}
+
+<h2>Shipping Information</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateShipping")
+</p>
+
+   @Html.ValidationMessage("Custom")
+
+@foreach (var item in Model)
+{
+    
+    <table>
+        <tr>
+            <td style="width:400px">
+                <div>
+
+                    <h3>@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName) </h3>
+                    <p>
+                        @Html.DisplayFor(modelItem => item.Address),
+                    <br />
+                        @Html.DisplayFor(modelItem => item.City)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.State) - @Html.DisplayFor(modelItem => item.PostalCode)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Country)
+                        <br />
+                    
+
+                    @Html.ActionLink("Edit", "EditShipping", new { id = item.Id }) |                    
+                    @Html.ActionLink("Delete", "DeleteShipping", new { id = item.Id }, new { onclick = "return confirm('Are you sure you wish to remove this address?');" })
+</p>
+                </div>
+            </td>
+
+            <td>
+               @using (Html.BeginForm()){
+                  
+               @Html.ActionLink("Continue", "confirm", "order", new { id = item.Id }, new { onclick = "return confirm('This will confirm your order and will proceed to payment. Please confirm');" })
+                }
+            </td>
+        </tr>
+    </table>
+
+}
+

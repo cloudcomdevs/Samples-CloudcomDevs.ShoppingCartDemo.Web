@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CloudComDevs.ShoppingCartDemo.Web.Models.Product>
+
+<h2>@ViewBag.Title</h2>
+
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+
+@Html.ValidationMessage("CustomMessage")
+
+
+
+<div id="center" class="column">
+    <div id="content">
+
+        <img src="/images/title6.gif" alt="" width="537" height="23" class="pad25" />
+
+        <div class="stuff">
+            @foreach (var item in Model)
+            {
+                <div class="item">
+                    @if (item.Picture != null)
+                    {
+                        @Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.Picture) + "\" alt=" + item.ImagePath + " width='124' height='90'/>")
+                    }
+
+                    @Html.ActionLink(@item.ProductName, "details", "product", new { id = item.ProductID }, new { @class = "name" })
+                    <span>$@item.UnitPrice</span>
+                    @* @Html.ActionLink("Add to cart", "add", "shoppingcart", new { id = item.ProductID }, null)*@
+                    @if (@item.Remaining > 0)
+                    {
+                        <a href="/shoppingcart/add/@item.ProductID">
+                            <img src="/images/cart.gif" alt="" width="71" height="19" /></a>
+                    }
+                    else{
+                        <span>out of stock</span>
+                    }
+                </div>
+            }
+        </div>
+
+
+    </div>
+</div>
+

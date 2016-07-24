@@ -1,0 +1,31 @@
+﻿@model CloudComDevs.ShoppingCartDemo.Web.Models.ShoppingCart
+
+@*<img src="/images/shopping.gif" alt="" width="24" height="24" class="shopping" />*@
+
+<a href="@Url.Action("details","shoppingcart")">
+    <img src="/images/shopping.gif" alt="View my cart" width="24" height="24" class="shoppingimage" /></a>
+
+<p><strong>@Html.DisplayFor(modelItem => @Model.ItemCount)</strong> <span>item(s)</span></p>
+<p><strong><span>Amount: </span>$@Html.DisplayFor(modelItem => @Model.TotalCost)</strong></p>
+
+@*@Html.ActionLink("View my cart", "details", "shoppingcart", new { id = @Model.CartId }, new { @class = "cartsummary" })*@
+
+
+
+
+@*            @Html.DisplayFor(modelItem => @Model.CartOwner)*@
+
+
+@*@Html.DisplayFor(modelItem => @Model.TotalCost)*@
+
+
+@*            @Html.DisplayFor(modelItem => @Model.DateCreated)
+       
+        
+            @Html.DisplayFor(modelItem => @Model.LastModifiedDate)
+       *@
+
+@*@Html.ActionLink("Edit", "Edit", new { id=@Model.CartId }) |*@
+@*@Html.ActionLink("My Cart", "Details", new { id = @Model.CartId }) |*@
+           @* @Html.ActionLink("Delete", "Delete", new { id=@Model.CartId })*@
+

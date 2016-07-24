@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CloudComDevs.ShoppingCartDemo.Web.Models.Category>
+
+@if (Request.IsAuthenticated)
+{
+   
+
+    if(User.IsInRole("Admin"))
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    }
+
+}
+@foreach (var item in Model)
+{
+    <ul id="navigation">
+
+        <li class="color">
+
+            <a href="/product/index/?id=@item.CategoryID" title="@item.CategoryName">@item.CategoryName</a>
+            @* @Html.ActionLink(item.CategoryName, "index", "product", new { id = item.CategoryID}, new { id = item.CategoryID})
+          *@
+
+            @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Delete", "Delete",
+                    new { id = item.CategoryID },
+                    new { onclick = "return confirm('Are you sure you wish to delete this category?');" })
+            }
+        </li>
+    </ul>
+}
+

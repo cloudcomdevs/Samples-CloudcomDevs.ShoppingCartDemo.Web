@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <div id="header">
+
+      
+        <a href="index.html" class="float">
+            <img src="/images/logo.jpg" alt="" width="171" height="73" /></a>
+        <div class="topblock1">
+            @Html.Partial("_LoginPartial")
+        </div>
+        <div class="topblock2">
+            @if(User.Identity.IsAuthenticated){
+            @Html.Action("showcartsummary", "shoppingcart")
+            }
+        </div>
+        <ul id="menu-bar">
+            <li>
+                <img src="/images/li.gif" alt="" width="19" height="29" /></li>
+            <li><a href="/home">
+                <img src="/images/but1_a.gif" alt="" width="90" height="29" /></a></li>
+            <li><a href="/product/index">
+                <img src="/images/but2.gif" alt="" width="129" height="29" /></a></li>
+            <li><a href="index2.html">
+                <img src="/images/but3.gif" alt="" width="127" height="29" /></a></li>
+            <li><a href="/account/manage">
+                <img src="/images/but4.gif" alt="" width="113" height="29" /></a></li>
+            <li><a href="/shoppingCart/details">
+                <img src="/images/but5.gif" alt="" width="132" height="29" /></a></li>
+            <li><a href="index2.html">
+                <img src="/images/but6.gif" alt="" width="105" height="29" /></a></li>
+            <li><a href="index2.html">
+                <img src="/images/but7.gif" alt="" width="82" height="29" /></a></li>
+            <li><a href="index2.html">
+                <img src="/images/but8.gif" alt="" width="112" height="29" /></a></li>
+            
+        </ul>
+    </div>
+
+    <div id="container">
+        <div id="center" class="column">
+
+            <div style="padding-left: 7px; width: 790px;">
+                @RenderSection("featured", required: false)
+                <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                </section>
+            </div>
+        </div>
+        <div id="left" class="column">
+            <div class="block">
+                <img src="/images/title1.gif" alt="" width="168" height="42" /><br />
+                @Html.Action("index", "category")
+            </div>
+          
+        </div>
+    </div>
+
+    <div id="footer">
+        <a href="index.html">Home</a>  |  <a href="index2.html">New Products</a>  |  <a href="index2.html">Special Offers</a>  |  <a href="index2.html">My Account</a>  |  <a href="index2.html">Shopping Chart</a>  |  <a href="index2.html">Locations</a>  |  <a href="index2.html">FAQ</a>  |  <a href="index2.html">Contact Us</a>  |  <a href="index2.html" class="terms">Privacy Policy</a>  |  <a href="index2.html" class="terms">Terms of Use</a>
+        <p>Copyright &copy;. All rights reserved.
+    </div>
+
+
+    @*    <div id="body">
+        @RenderSection("featured", required: false)
+        <section>
+            @RenderBody()
+        </section>
+    </div>*@
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

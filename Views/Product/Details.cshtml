@@ -1,0 +1,54 @@
+﻿@model CloudComDevs.ShoppingCartDemo.Web.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div id="about">
+
+    @Html.ValidationMessage("CustomMessage")
+
+
+    <div class="photos">
+        @Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(@Model.Picture) + "\" alt=" + @Model.ImagePath + " width='227' height='215'/>")
+        <br />
+        @* <a href="#" class="moreph">more photos</a>
+        <a href="#" class="comments">View Comments (27)</a>*@
+    </div>
+    <div class="description">
+        <p><u>@Model.ProductName</u> <span class="price">$@Model.UnitPrice</span></p>
+        <p>@Model.Description</p>
+        <p><strong>Short features:</strong></p>
+        <ul id="features">
+            <li class="color"><span>Quantity Available</span>@Model.Quantity</li>
+            @*<li class="color"><span>Quantity Available</span>@if(Model.Quantity > Model.Sold) { (Model.Quantity - Model.Sold) } else { <text>Out of stock </text>}</li>*@
+            <li><span>Sold so far</span>@Model.Sold</li>
+            <li><span>Remaining</span>@Model.Remaining</li>
+            <li class="color"><span>Total Views</span>@Model.TotalViews</li>
+            <li><span>Rating</span>@Model.Rating</li>
+
+        </ul>
+        @if (Model.Remaining > 0)
+        {
+            <a href="/shoppingcart/add/@Model.ProductID">
+                <img src="/images/carts.gif" alt="@Model.ProductName" width="16" height="24" class="carts" /></a>
+        }
+        else
+        {
+            <text>Out of stock</text>
+        }
+
+    </div>
+
+
+    <br />
+    <br />
+
+    <p>
+        @* @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |*@
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+    <br />
+    <br />
+</div>
